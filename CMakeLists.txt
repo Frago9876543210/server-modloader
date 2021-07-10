@@ -12,7 +12,11 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(MODLOADER_VERSION "Preview 2")
 
 FetchContent_Declare(funchook GIT_REPOSITORY https://github.com/kubo/funchook.git)
-FetchContent_MakeAvailable(funchook)
+FetchContent_GetProperties(funchook)
+if(NOT funchook_POPULATED)
+    FetchContent_Populate(funchook)
+    add_subdirectory(${funchook_SOURCE_DIR} ${funchook_BINARY_DIR} EXCLUDE_FROM_ALL)
+endif()
 
 add_subdirectory(symbols)
 
