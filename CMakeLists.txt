@@ -18,6 +18,8 @@ if(NOT funchook_POPULATED)
     add_subdirectory(${funchook_SOURCE_DIR} ${funchook_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
+
 add_subdirectory(symbols)
 
 add_library(server_modloader SHARED include/modloader/hook.h include/modloader/statichook.h include/modloader/log.h
