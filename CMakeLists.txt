@@ -13,6 +13,8 @@ set(MODLOADER_VERSION "Preview 2")
 FetchContent_Declare(funchook GIT_REPOSITORY https://github.com/kubo/funchook.git)
 FetchContent_MakeAvailable(funchook)
 
+add_subdirectory(symbols)
+
 add_library(server_modloader SHARED include/modloader/hook.h include/modloader/statichook.h include/modloader/log.h
         include/modloader/loader.h
         src/hook.cpp src/log.cpp src/loader.h src/loader.cpp src/elf_helper.cpp src/elf_helper.h src/main.cpp)
