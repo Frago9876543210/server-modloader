@@ -10,4 +10,4 @@ else ()
     target_compile_definitions(symbols PRIVATE MODLOADER_SYMBOLS_TABLE="${MODLOADER_SYMBOLS_TABLE}")
 endif ()
 
-install(TARGETS symbols DESTINATION lib)
+install(TARGETS symbols DESTINATION ${CMAKE_INSTALL_LIBDIR})
