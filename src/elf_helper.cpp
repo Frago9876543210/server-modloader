@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <elf.h>
 #include <modloader/log.h>
+#include <sys/auxv.h>
 
 using namespace modloader;
 
@@ -82,4 +83,12 @@ std::vector<std::string> ElfHelper::getDependencies(std::string const &path) {
             ret.emplace_back(&strtab[dynamicData[i].d_un.d_val]);
     }
     return ret;
+}
+
+void *ElfHelper::getCurrentModule() {
+    size_t header = getauxval(AT_PHDR);
+    if (!header) {
+        return nullptr;
+    }
+    return (void *) (header - sizeof(Elf64_Ehdr));
 }

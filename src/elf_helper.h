@@ -10,6 +10,7 @@ class ElfHelper {
 public:
     static std::vector<std::string> getDependencies(std::string const &path);
 
+    static void *getCurrentModule();
 };
 
 }
